@@ -1,284 +1,379 @@
 <!DOCTYPE html>
-<html lang="pt">
-
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio Profissional - Pablo</title>
+    <title>Portfólio - Desenvolvedor</title>
     <style>
-        /* Estilos gerais */
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-    font-family: Arial, sans-serif;
-    color: #ffffff;
-    background: url('https://imgur.com/QFK7sn7.gif') no-repeat center center fixed;
-    background-size: cover;
-    text-align: center;
-    padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background: url('https://imgur.com/QFK7sn7.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background: rgba(0, 0, 0, 0.7); /* Fundo preto translúcido */
-    border-radius: 10px;
-    border: 1px solid #ffffff; /* Borda branca */
-    position: relative;
-        }
-
-        header {
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        header img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            border: 2px solid #ffffff;
-        }
-
-        header h1 {
-            margin: 10px 0;
-            color: #ffffff;
-        }
-
-        header p {
-            font-size: 1.2em;
-            color: #cccccc; /* Texto cinza claro */
+        body::before {
+            content: '';
+            position: fixed; /* Troque absolute por fixed para cobrir todo o fundo, mesmo ao rolar a página */
+            top: 0;
+            left: 0;
+            width: 100%; /* Cobre toda a largura */
+            height: 100%; /* Ajuste para cobrir toda a altura */
+            background: rgba(0, 0, 0, 0.5); /* Fundo preto translúcido */
+            z-index: -1; /* Para ficar atrás do conteúdo */
         }
 
         section {
-            margin-top: 30px;
+            padding: 60px 20px;
+            border-bottom: 2px solid #fff;
+            text-align: center;
         }
 
-        h2 {
-            color: #ffffff;
-            border-bottom: 2px solid #ffffff;
-            display: inline-block;
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid #fff;
+            position: fixed;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        .section-title {
+            font-size: 2rem;
             margin-bottom: 20px;
-            padding-bottom: 5px;
+            position: relative;
+            color: #fff;
         }
 
-        .skills,
-        .links,
-        .servers {
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: #fff;
+            margin: 10px auto;
+            border-radius: 4px;
+        }
+
+        .biography p, .links p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        /* Ajustando as grids */
+        .skills-grid, .servers-grid, .links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(2, 1fr); /* 2 colunas */
             gap: 20px;
+            text-align: center;
         }
 
         .card {
-            background-color: #333333; /* Fundo cinza escuro */
-            border: 1px solid #ffffff; /* Borda branca */
+            background: #111;
+            border: 2px solid #fff;
             border-radius: 10px;
             padding: 20px;
-            text-align: center;
-            transition: transform 0.3s, background-color 0.3s;
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
             transform: scale(1.05);
-            background-color: #444444; /* Fundo mais claro ao passar o mouse */
         }
 
-        .card img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
-
-        /* Estilos específicos para as imagens dos servidores */
-        .servers .card img {
-            width: 100%;
-            height: 150px; /* Define uma altura uniforme */
-            object-fit: cover; /* Ajusta a imagem para preencher o espaço */
-        }
-
-        .card h3 {
-            color: #ffffff;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #cccccc; /* Texto cinza claro */
-        }
-
-        footer {
-            margin-top: 30px;
-            text-align: center;
-            color: #cccccc;
-        }
-
-        footer a {
-            color: #ffffff;
+        .links-grid a {
+            color: #fff;
             text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #fff;
+            padding: 10px 15px;
+            border-radius: 10px;
+            transition: transform 0.3s ease, background 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .links-grid a:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        /* Botão */
+        .button {
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            background: transparent;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1rem;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+            margin: 10px 0; /* Ajuste para evitar margens grandes */
+            text-decoration: none; /* Remove sublinhado */
+        }
+
+        .button:hover {
+            background: #fff;
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        /* Rodapé */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), #000); /* Gradiente escuro */
+            color: #fff;
+            border-top: 2px solid #fff;
+            margin-top: 20px; /* Espaço acima do rodapé */
+            position: relative;
+        }
+
+        .footer-content p {
+            margin-bottom: 20px; /* Aumenta o espaço entre o texto e o botão */
+        }
+
+        .button {
+            margin-top: 20px; /* Garante que o botão tenha espaço acima */
+        }
+
+        .server-card img, .links-grid img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .server-card .description {
+            font-size: 1rem;
+            margin-top: 10px;
+            color: #fff;
+        }
+
+        /* Ajuste para as imagens dos servidores */
+        .servers .card img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 10px;
         }
     </style>
-</head>
+    </head>
+            <script>
+                // Configuração básica de partículas de neve
+                let maxSnowflakes = 100; // Número máximo de flocos visíveis
+    let snowflakesCount = 0;
+                function createSnowflake() {
+                    const snowflake = document.createElement("div");
+                    snowflake.classList.add("snowflake");
+                    snowflake.textContent = "❄";
+                    snowflake.style.left = Math.random() * 100 + "vw";
+                    snowflake.style.animationDuration = Math.random() * 5 + 12 + "s"; // Duração maior (12-17s)
+                    snowflake.style.fontSize = Math.random() * 10 + 10 + "px";
+                    document.body.appendChild(snowflake);
 
+                    // Remover o floco ao término da animação
+                    snowflake.addEventListener("animationend", () => {
+                        snowflake.remove();
+                    });
+                }
+
+                setInterval(createSnowflake, 1000); // Intervalo maior = menos flocos
+            </script>
+
+            <style>
+                /* Estilo para as partículas de neve */
+                .snowflake {
+                    position: fixed;
+                    top: -5px;
+                    color: white;
+                    z-index: 9999;
+                    animation: fall linear infinite;
+                }
+
+                @keyframes fall {
+                    0% {
+                        transform: translateX(0) translateY(0);
+                        opacity: 1;
+                    }
+                    25% {
+                        transform: translateX(-20px) translateY(25vh);
+                    }
+                    50% {
+                        transform: translateX(20px) translateY(50vh);
+                    }
+                    75% {
+                        transform: translateX(-20px) translateY(75vh);
+                    }
+                    100% {
+                        transform: translateX(0) translateY(100vh);
+                        opacity: 0;
+                    }
+                }
+            </style>
 <body>
-    <div class="container">
-        <header>
-            <img src="https://media.discordapp.net/attachments/1307147981379604540/1310642935624241183/67530aa243ac0271b19c68078f47f22e.gif?ex=6745f6da&is=6744a55a&hm=6ac2511690f0e651c309d940fcb5f8344b18eca01c03594f76409aa863f14779&" alt="Foto de perfil">
-            <h1>Ozuko (Paulo)</h1>
-            <p>Meu nome é Leví, tenho 17 anos e sou alguém que aprecia a interação e a troca de ideias, sempre com o objetivo de promover um ambiente saudável e amigável para todos. Busco atuar em um lugar onde possa crescer profissionalmente e, ao mesmo tempo, contribuir de maneira significativa, ajudando no que for possível. No mais, acredito que a felicidade é um valor essencial para todos.</p>
-        </header>
 
-        <section>
-            <h2>Skills</h2>
-            <div class="skills">
-                <div class="card">
-                    <h3>Prestativo</h3>
-                    <p>Sempre pronto para ajudar e atender às necessidades dos outros.</p>
-                </div>
-                <div class="card">
-                    <h3>Comunicativo</h3>
-                    <p>Facilitando a troca de ideias e garantindo uma boa interação entre todos.</p>
-                </div>
-                <div class="card">
-                    <h3>Comprometido</h3>
-                    <p>Sempre dedicado a cumprir minhas responsabilidades com eficiência e seriedade."
-</p>
-                </div>
-                <div class="card">
-                    <h3>Equipe</h3>
-                    <p>Valoriso o trabalho em equipe, colaborando de forma eficaz para alcançar objetivos comuns.
-</p>
-                </div>
 
-            </div>
-        </section>
+    <header>
+        <div class="profile-pic-container">
+            <img src="https://i.imgur.com/XwhyUIm.png" alt="Foto de Perfil" class="profile-pic">
+        </div>
+        <h1>Ozuko - Leví</h1>
+    </header>
 
-        <section>
-            <h2>Servidores</h2>
-            <div class="servers">
-                <div class="card">
-                    <img src="https://cdn.discordapp.com/icons/1238298065648091289/1d7c1542080a27986ba7092a952f69a7.png?size=2048" alt="Anime Strike">
-                    <h3>Anime Strike</h3>
-                    <p>Moderador - 34k+</p>
-                </div>
-                <div class="card">
-                    <img src="https://media.discordapp.net/attachments/1261828382837051485/1307367480599252992/Screenshot_2024-11-16-12-27-01-388_com.discord.jpg?ex=673a0c59&is=6738bad9&hm=ddeabbe92669225d921ac13f22f3965ea41771b2d2af86b9c54f6d82f559791b&" alt="O Slawer">
-                    <h3>O Slawer</h3>
-                    <p>Moderador - 9k+</p>
-                </div>
-                <div class="card">
-                    <img src="https://media.discordapp.net/attachments/1261828382837051485/1307361351940833330/e8208074bcf3ee3612716273b1bd53c6.png?ex=673a06a3&is=6738b523&hm=19b8a25face0e47ef14a37c2a6fa3a2b7a6d0835b28336ecac5e688133a8e551&" alt="Anime Blast">
-                    <h3>Anime Blast</h3>
-                    <p>Moderador - 3k+</p>
-                </div>
-                
-                <div class="card">
-                    <img src="https://media.discordapp.net/attachments/1261828382837051485/1307361352402210876/ae77086ad3f8ec37472856f7f898f2e7.png?ex=673a06a4&is=6738b524&hm=34f35bd6fccbf8cb5c9e8510dd63b7aec8c8d979b86b4aac7c5e46ec5116257f&" alt="Anime Sword X">
-                    <h3>Anime Pix</h3>
-                    <p>Moderador - 1k+</p>
-                </div>
-            </div>
-        </section>
+    <section class="biography">
+        <p><strong></strong>  </p>
+        <p><strong></strong>Meu nome é Leví, tenho 17 anos e sou alguém que aprecia a interação e a troca de ideias, sempre com o objetivo de promover um ambiente saudável e amigável para todos. Busco atuar em um lugar onde possa crescer profissionalmente e, ao mesmo tempo, contribuir de maneira significativa, ajudando no que for possível. No mais, acredito que a felicidade é um valor essencial para todos.</p>
+    </section>
 
-        <style>
-        .servers .card img {
-        width: 150px; /* Definindo um tamanho fixo para as imagens */
-        height: 150px; /* Definindo uma altura fixa */
-        object-fit: cover; /* Faz a imagem se ajustar ao tamanho sem distorcer */
-        border-radius: 10px; /* Mantém bordas arredondadas */
+    <style>
+        /* Estilo do cabeçalho fixo */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid #fff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            height: 80px; /* Define uma altura para o cabeçalho */
         }
-        </style>
 
-        <section>
-    <h2>Projects in Trello</h2>
-    <div class="skills">
-        <div class="card">
-            <h3>Anime Strike Trello</h3>
-            <p>Responsável Por coleta de Informacoes</p>
-            <a href="https://trello.com/b/uJ7fTeT6/anime-strike" target="_blank" class="button">Access Trello</a>
+        .profile-pic-container {
+            margin-right: 20px; /* Espaçamento entre a foto e o título */
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            color: #fff;
+        }
+
+        /* Estilo da bio */
+        .biography {
+            margin-top: 100px; /* Espaço suficiente para a bio não ficar sobrepondo o cabeçalho */
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+
+    <section class="skills">
+        <h2 class="section-title">🛠️ Skills 🛠️</h2>
+        <div class="skills-grid">
+            <div class="card">
+                <h3>Prestativo</h3>
+                <p>Sempre pronto para ajudar e atender às necessidades dos outros.</p>
+            </div>
+            <div class="card">
+                <h3>Comunicativo</h3>
+                <p>Facilitando a troca de ideias e garantindo uma boa interação entre todos.</p>
+            </div>
+            <div class="card">
+                <h3>Comprometido</h3>
+                <p>Sempre dedicado a cumprir minhas responsabilidades com eficiência e seriedade.</p>
+            </div>
+            <div class="card">
+                <h3>Equipe</h3>
+                <p>Valoriso o trabalho em equipe, colaborando de forma eficaz para alcançar objetivos comuns.</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<style>
-    .button {
-        display: inline-block;
-        background-color: #000000; /* Preto */
-        color: #ffffff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: 2px solid #ffffff; /* Borda branca */
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 10px;
-        transition: background-color 0.3s, border-color 0.3s;
-    }
+    <section class="servers">
+        <h2 class="section-title">🛠 Servers as Staff 🛠</h2>
+        <div class="servers-grid">
+            <div class="card">
+                <img src="https://i.imgur.com/OjLwztg.png" alt="Anime Strike">
+                <h3>Anime Strike</h3>
+                <p>Moderador - 34k+</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imgur.com/dfcQzjd.jpeg" alt="O Slawer">
+                <h3>O Slawer</h3>
+                <p>Moderador - 9k+</p>
+            </div>
+            <div class="card">
+                <img src="https://i.imgur.com/OFsWVn9.jpeg" alt="Anime Blast">
+                <h3>Anime Blast</h3>
+                <p>Moderador - 4k+</p>
+            </div>
 
-    .button:hover {
-        background-color: #444444; /* Cinza escuro */
-        border-color: #ff9800; /* Borda laranja no hover */
-    }
-</style>
+            <div class="card">
+                <img src="https://i.imgur.com/ZZzWdHh.png" alt="Anime Sword X">
+                <h3>Anime Pix</h3>
+                <p>Moderador - 1k+</p>
+            </div>
 
-        <section>
-    <h2>Useful Links</h2>
-    <div class="links">
-        <div class="card">
-            <img src="https://i.imgur.com/geUrQi4.png" alt="YouTube" width="50">
-            <h3>YouTube</h3>
-            <a href="https://youtube.com/@ozukoo_here?si=Fbmd-rpg-wyRMvFk" target="_blank" class="button">Access Channel</a>
+
         </div>
-        
-        <div class="card">
-            <img src="https://i.imgur.com/bIILL1q.png" alt="Roblox" width="50">
-            <h3>Roblox</h3>
-            <a href="https://www.roblox.com/pt/users/5849909006/profile" target="_blank" class="button">Roblox Profile</a>
-        </div>
+    </section>
+
+    <section class="projects">
+        <h2 class="section-title">📋 Projects in Trello 📋</h2>
+        <div class="skills-grid">
+            <div class="card">
+                <h3>Anime Strike Trello</h3>
+                <p>Responsável Por coleta de Informacoes.</p>
+                <a href="https://trello.com/b/uJ7fTeT6/anime-strike" target="_blank" class="button">Access Trello</a>
+            </div>
+      
+    </section>
+
+    <section class="links">
+        <h2 class="section-title">🔗 Useful Links 🔗</h2>
+        <div class="links-grid">
+            
+
+            <div class="card">
+                <img src="https://i.imgur.com/geUrQi4.png" alt="YouTube" width="50">
+                <h3>YouTube</h3>
+                <a href="https://youtube.com/@ozukoo_here?si=Fbmd-rpg-wyRMvFk" target="_blank" class="button">Access Channel</a>
+            </div>
+
+            <div class="card">
+                <img src="https://i.imgur.com/bIILL1q.png" alt="Roblox" width="50">
+                <h3>Roblox</h3>
+                <a href="https://www.roblox.com/pt/users/5849909006/profile" target="_blank" class="button">Roblox Profile</a>
+            </div>
+            </div>
+        </section>
+
+
+    </section>
+
+   <footer>
+    <div class="footer-content">
+        <p>© 2024 By Batata 🍟 | All rights reserved.</p>
+        <a href="https://discord.gg/HQKs3hpj8M" class="button">Batata Contact</a>
     </div>
-</section>
-
-<style>
-    .button {
-        display: inline-block;
-        background-color: #000000; /* Preto */
-        color: #ffffff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: 2px solid #ffffff; /* Borda branca */
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 10px;
-        transition: background-color 0.3s, border-color 0.3s;
-    }
-
-    .button:hover {
-        background-color: #444444; /* Cinza escuro */
-        border-color: #ff9800; /* Borda laranja no hover */
-    }
-</style>
-
-        <footer>
-    <p>© 2024 By Batata 🍟 | All rights reserved.</p>
-    <a href="https://discord.gg/HQKs3hpj8M" class="button">Batata contact</a>
-</footer>
-
-<style>
-    .button {
-        display: inline-block;
-        background-color: #000000; /* Preto */
-        color: #ffffff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        border: 2px solid #ffffff; /* Borda branca */
-        text-decoration: none;
-        font-weight: bold;
-        margin-top: 10px;
-        transition: background-color 0.3s, border-color 0.3s;
-    }
-
-    .button:hover {
-        background-color: #444444; /* Cinza escuro */
-        border-color: #ff9800; /* Borda laranja no hover */
-    }
-</style>
-    </div>
-</body>
-
-</html>
+   </footer>
