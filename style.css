@@ -1,0 +1,671 @@
+/* RESET E BASE */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Estilos gerais */
+body {
+  background-color: #121212; /* Cor de fundo padrão */
+  color: #E0E0E0;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding-top: 80px; /* Ajuste conforme a altura da sua navbar */
+  transition: background-color 0.3s ease;
+
+  /* Adicionando a imagem de fundo */
+  background-image: url('https://i.postimg.cc/YS1kpg3d/Frame-1.png'); /* Substitua pela URL da sua imagem */
+  background-size: cover; /* A imagem cobre toda a tela */
+  background-position: center center; /* A imagem será centralizada */
+  background-attachment: fixed; /* A imagem não se moverá quando o usuário rolar a página */
+}
+
+
+/* Adicionar um toque no header */
+header {
+  padding-top: 80px; 
+}
+
+/* NAVBAR ESTILOS */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem; /* Reduzindo o padding */
+  background-color: #111111;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 3px solid #FF4081;
+  border-radius: 0 0 15px 15px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* LOGO */
+.navbar-logo a {
+  color: #00FF99;
+  font-size: 2rem; /* Reduzindo o tamanho da fonte */
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px; /* Ajustando o espaçamento */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-logo a:hover {
+  color: #FF4081;
+  transform: scale(1.1);
+}
+
+/* LINKS DA NAVBAR */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem; /* Reduzindo o espaço entre os links */
+  align-items: center;
+}
+
+.navbar-links li {
+  position: relative;
+}
+
+.navbar-links li a {
+  color: #E0E0E0;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem; /* Reduzindo o tamanho da fonte */
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navbar-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #FF4081;
+  transition: width 0.3s ease;
+}
+
+.navbar-links li a:hover {
+  color: #FF4081;
+  transform: translateY(-4px);
+}
+
+.navbar-links li a:hover::after {
+  width: 100%;
+}
+
+/* Botão de alternância (hamburguer) para dispositivos móveis */
+.navbar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-toggle .bar {
+  width: 30px; /* Reduzindo a largura das barras */
+  height: 4px; /* Reduzindo a altura das barras */
+  background-color: #fff;
+  margin: 6px 0;
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle.active .bar:nth-child(1) {
+  transform: rotate(45deg);
+  position: relative;
+  top: 8px;
+}
+
+.navbar-toggle.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggle.active .bar:nth-child(3) {
+  transform: rotate(-45deg);
+  position: relative;
+  top: -8px;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    gap: 1.5rem; /* Reduzindo o espaço entre os links no mobile */
+    position: absolute;
+    top: 80px;
+    right: 0;
+    background-color: #121212;
+    width: 100%;
+    padding: 2rem; /* Reduzindo o padding */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .navbar-links.active {
+    display: flex;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .navbar-toggle {
+    display: block;
+  }
+}
+
+/* ANIMAÇÕES DE FADA NO MENU DE MOBILE */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Melhora do estilo de links no mobile */
+.navbar-links li a {
+  color: #E0E0E0;
+  font-size: 1.3rem; /* Reduzindo o tamanho da fonte */
+  font-weight: 600;
+  transition: color 0.3s ease, transform 0.3s ease;
+  animation: fadeInUp 0.5s ease-in-out;
+}
+
+.navbar-links li a:hover {
+  color: #FF4081;
+  transform: scale(1.1);
+}
+
+
+
+/* CONTAINERS PRINCIPAIS */
+header, main, footer {
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+/* FOTO DE PERFIL */
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.1);
+}
+
+/* TÍTULOS E TEXTOS */
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #FF4081;
+  transition: color 0.3s ease;
+}
+
+h1:hover {
+  color: #FF80AB;
+}
+
+h2 {
+  font-size: 1.9rem;
+  margin: 2.5rem 0 1rem;
+  border-bottom: 2px solid #FF4081;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.bio, .contact-text {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  font-size: 1.1rem;
+  color: #B0B0B0;
+  line-height: 1.7;
+}
+
+/* Botões de Hero */
+.hero-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 30px;
+  border: 2px solid #FF4081;
+  border-radius: 8px;
+  color: #FF4081;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+}
+
+.hero-btn:hover {
+  background: #FF4081;
+  color: #0E0E0E;
+  transform: translateY(-5px);
+}
+
+/* GRID DE CARDS */
+.grid {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 20px;
+}
+
+.card {
+  background: linear-gradient(145deg, #1c1c1c, #121212);
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  width: 300px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
+.card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(255, 0, 94, 0.35);
+}
+
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.4s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card h3 {
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #FF4081;
+  text-align: center;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+  letter-spacing: 1px;
+  margin: 0;
+  transition: color 0.3s ease;
+}
+
+.card:hover h3 {
+  color: #FF80AB;
+}
+
+
+/* Set up the arrow buttons */
+.arrow-btn {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  z-index: 10000;
+  user-select: none;
+  padding: 0 15px;
+  transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.arrow-btn.left {
+  left: 20px;
+}
+
+.arrow-btn.right {
+  right: 20px;
+}
+
+/* Modal Styling */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(6px);
+  transition: opacity 0.4s ease-in-out;
+}
+
+.modal.open {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  animation: zoomIn 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 80vh;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+/* Animation for modal */
+@keyframes zoomIn {
+  from {
+    transform: scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Close button */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255, 0, 94, 0.9);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.close-btn:hover {
+  background: rgba(255, 51, 102, 0.9);
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.close-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+/* Additional enhancements for mobile responsiveness */
+@media (max-width: 600px) {
+  .arrow-btn {
+    font-size: 2.5rem;
+    padding: 0 10px;
+  }
+
+  .modal-content {
+    max-width: 95%;
+    max-height: 95%;
+  }
+}
+
+/* Estilo para a seção do jogo */
+#jogo {
+  margin: 4rem 0;
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Container que agrupa a imagem e a descrição */
+.jogo-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 1200px; /* Ajuste para controlar a largura do conteúdo */
+  margin: 0 auto; /* Centraliza o conteúdo */
+}
+
+/* Estilo para a imagem do jogo */
+.jogo-imagem img {
+  max-width: 50%; /* A imagem ocupa 50% da largura */
+  height: auto; /* Mantém a proporção da imagem */
+  border-radius: 10px;
+}
+
+/* Estilo para a descrição do jogo */
+.jogo-descricao {
+  max-width: 45%; /* A descrição ocupa até 45% da largura */
+}
+
+.jogo-descricao h3 {
+  font-size: 2rem;
+  color: #00FF99; /* Cor personalizada para o título */
+  margin-bottom: 1rem;
+}
+
+.jogo-descricao p {
+  font-size: 1.1rem;
+  color: #E0E0E0;
+  line-height: 1.8;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  #jogo {
+    flex-direction: column; /* Alinha os itens verticalmente em telas menores */
+    text-align: center; /* Alinha o texto ao centro */
+  }
+
+  .jogo-imagem img {
+    max-width: 80%; /* A imagem ocupa 80% da tela em dispositivos móveis */
+  }
+
+  .jogo-descricao {
+    max-width: 80%; /* A descrição ocupa 80% da tela em dispositivos móveis */
+  }
+}
+
+
+/* BOTÕES DE CONTATO */
+.contact-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 2rem;
+}
+
+.btn {
+  background: transparent;
+  border: 2px solid #FF4081;
+  padding: 12px 28px;
+  color: #FF4081;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 2px 8px rgba(255, 0, 94, 0.2);
+}
+
+.btn:hover {
+  background: #FF4081;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(255, 0, 94, 0.4);
+}
+
+/* RODAPÉ */
+footer {
+  font-size: 1rem;
+  color: #B0B0B0;
+  margin-top: 4rem;
+  text-align: center;
+  padding: 2rem 0;
+  border-top: 1px solid #444;
+}
+
+footer a {
+  color: #FF4081;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+footer a:hover {
+  color: #FFF;
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.7rem;
+  }
+
+  .contact-links {
+    gap: 20px;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+}
+
+
+/* Estilos do botão de dinheiro */
+.money-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: transform 0.3s;
+  animation: rotateMoney 3s infinite linear; /* Animação de rotação */
+}
+
+@keyframes rotateMoney {
+  0% {
+    transform: rotate(0deg); /* Começo da rotação */
+  }
+  100% {
+    transform: rotate(360deg); /* Final da rotação */
+  }
+}
+
+.money-button:hover {
+  transform: scale(1.2); /* Efeito ao passar o mouse */
+}
+
+/* Estilos da chuva de dinheiro */
+.money-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;  /* Para não bloquear interações com a página */
+  z-index: 999;  /* Colocar acima de outros elementos */
+}
+
+.money {
+  position: absolute;
+  animation: fall 3s linear infinite; /* Animação de queda do dinheiro */
+  font-size: 20px;
+  opacity: 0;  /* Fica invisível até a animação começar */
+  animation-name: fall, fadeIn;  /* Definir a animação de queda e fade-in */
+}
+
+/* Animação de queda do dinheiro */
+@keyframes fall {
+  0% {
+    top: -10%; /* Começa fora da tela, no topo */
+    opacity: 1;
+  }
+  100% {
+    top: 100vh;  /* Cai até o final da tela */
+    opacity: 0;
+  }
+}
+
+/* Animação de Fade-In para suavizar a aparição do dinheiro */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Container da imagem */
+.image-container {
+  display: flex;  /* Usado para centralizar a imagem */
+  justify-content: center;  /* Centraliza a imagem horizontalmente */
+  align-items: center;  /* Centraliza a imagem verticalmente */
+  height: 100vh;  /* Faz o container ocupar toda a altura da tela */
+  width: 100%;  /* O container ocupa toda a largura */
+}
+
+/* Estilo para a imagem */
+.image {
+  width: 100%;  /* A imagem vai ocupar toda a largura do container */
+  max-width: 800px;  /* A imagem não vai ultrapassar essa largura máxima */
+  height: auto;  /* Mantém a proporção da imagem */
+}
+
+
