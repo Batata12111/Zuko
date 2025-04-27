@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfólio UI - Pablo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section id="fale comigo"></section>
+
+  <div class="money-rain"></div>
+
+    <header>
+      <nav class="navbar">
+        <div class="navbar-logo">
+          <a href="#">🍟 Batata Dev & Staff</a>
+        </div>
+        <ul class="navbar-links">
+          <li><a href="#fale comigo">Fale Comigo</a></li>
+          <li><a href="#sobre">Projetos</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbar-toggle">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+      </nav>
+
+      <!-- Botão de Dinheiro -->
+<button class="money-button" id="moneyButton">💸</button>
+
+
+      <div class="hero-section">
+        <img src="https://i.imgur.com/01d1DrQ.png" alt="Foto de perfil de Pablo" class="profile-pic" id="profilePic">
+<audio id="profile-audio" src="https://github.com/Batata12111/Bounce/blob/main/Here%20comes%20the%20money%20-%20meme%20(1).mp3" preload="auto"></audio>
+
+
+        <h1>Pablo - UI Designer</h1>
+        <p class="bio">Sou UI Designer especializado em criar interfaces modernas e intuitivas para jogos e plataformas digitais.</p>
+        <a href="https://discord.gg/wReyZ5AZDx" class="hero-btn" target="_blank" rel="noopener noreferrer">Fale Comigo</a>
+      </div>
+  </header>
+
+  <!-- Modal para visualização de imagens -->
+  <div class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close-btn" aria-label="Fechar modal">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      
+      <img src="" alt="Visualização ampliada de UI" class="modal-image" id="modalImage">
+      <div class="modal-controls">
+        <button id="prevBtn" class="arrow-btn left" aria-label="Imagem anterior">←</button>
+        <button id="nextBtn" class="arrow-btn right" aria-label="Próxima imagem">→</button>
+      </div>
+    </div>
+  </div>
+
+  <main>
+    <section>
+      <section id="sobre"></section>
+      <h2>Projetos</h2>
+      <div class="grid">
+
+        <!-- CARD 1 -->
+        <div class="card" data-images='["https://i.postimg.cc/Zn4X8XJt/Rank-Up.png", "https://i.postimg.cc/SRL25Y0Y/Forge.png", "https://i.postimg.cc/nLwPjMPm/Gamemode.webp"]'>
+          <img src="https://i.postimg.cc/GtQvRp74/imagem-2025-04-27-133016348.png" alt="Projeto Anime Eclipse">
+          <h3>Anime Eclipse</h3>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card" data-images='["https://i.imgur.com/NVmUedS.png", "https://i.imgur.com/D9jZmVK.png"]'>
+          <img src="https://i.postimg.cc/m2HwcqNm/imagem-2025-04-27-124116974.png" alt="Projeto ???">
+          <h3>???</h3>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card" data-images='["https://i.postimg.cc/02W4v5JM/Shop-P2w.png", "https://i.postimg.cc/Kz1PnF8V/image.png", "https://i.postimg.cc/zGfVL7B2/SHOP-2.png"]'>
+          <img src="https://i.postimg.cc/rsH1PGGy/imagem-2025-04-27-123827081.png" alt="Projeto UI's à Venda">
+          <h3>UI's à Venda</h3>
+        </div>
+
+        <div class="image-container">
+          <img src="https://i.postimg.cc/9FKMYScK/Frame-1.png" alt="Imagem com texto" class="image">
+        </div>
+        
+        
+
+      </div>
+    </section>
+
+    <section>
+      <section id="contato"></section>
+      <h2>Contato</h2>
+      <p class="contact-text">Entre em contato comigo pelos links abaixo:</p>
+      <div class="contact-links">
+        <a href="https://discord.gg/wReyZ5AZDx" class="hero-btn" target="_blank" rel="noopener noreferrer">Discord</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Pablo | Portfólio de UI Design. Todos os direitos reservados.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
